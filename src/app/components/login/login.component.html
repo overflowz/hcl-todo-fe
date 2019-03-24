@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<div class="container text-center login">
+  <h1>Login</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <input [(ngModel)]="user.name" type="text" class="form-control" placeholder="name" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center align-items-end mt-2">
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="login(user)">Login</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <span class="message-error">{{ lastError }}</span>
+    </div>
+  </div>
+</div>

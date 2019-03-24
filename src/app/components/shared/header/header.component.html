@@ -1,3 +1,11 @@
-<p>
-  header works!
-</p>
+<div class="container-fluid header" *ngIf="currentUser">
+  <div class="logged-in float-left">
+    <span>Logged in as: {{ currentUser?.name }}</span>
+  </div>
+
+  <div class="actions float-right">
+    <button class="btn btn-sm btn-primary" (click)="logout()">Logout</button>
+  </div>
+
+  <div class="clearfix"></div>
+</div>

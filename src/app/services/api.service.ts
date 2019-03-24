@@ -21,9 +21,19 @@ export class ApiService {
       .post(`${env.apiUrl}/api/auth/login`, creds);
   }
 
-  logout(): Observable<any> {
-    return this.httpClient
-      .post(`${env.apiUrl}/api/auth/logout`, null);
+  logout(): void {
+    localStorage.removeItem('current_user');
+  }
+
+  // auth helpers
+
+  me(user?: any) {
+    try {
+      if (user) localStorage.setItem('current_user', JSON.stringify(user));
+      return JSON.parse(localStorage.getItem('current_user'));
+    } catch (err) {
+      return null;
+    }
   }
 
   // todo apis

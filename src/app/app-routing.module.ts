@@ -5,8 +5,8 @@ import { TodosComponent } from './components/todos/todos.component';
 import { AuthGuardService } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, canActivate: [AuthGuardService] },
-  { path: 'todos', component: TodosComponent, canActivate: [AuthGuardService] },
+  { path: '', component: TodosComponent, canActivate: [AuthGuardService] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '' },
 ];
 
