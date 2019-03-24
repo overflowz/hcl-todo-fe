@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment as env } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // for the sake of simplicity, put everything in one service.
 
@@ -13,6 +13,14 @@ export class ApiService {
   constructor(
     private httpClient: HttpClient,
   ) { }
+
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': JSON.stringify(this.me()),
+      }),
+    };
+  }
 
   // auth apis
 
@@ -40,16 +48,16 @@ export class ApiService {
 
   getTodos(): Observable<any> {
     return this.httpClient
-      .get(`${env.apiUrl}/api/todo`);
+      .get(`${env.apiUrl}/api/todo`, this.getHttpOptions());
   }
 
   createTodo(todo: any): Observable<any> {
     return this.httpClient
-      .post(`${env.apiUrl}/api/todo`, todo);
+      .post(`${env.apiUrl}/api/todo`, todo, this.getHttpOptions());
   }
 
   deleteTodo(id: any): Observable<any> {
     return this.httpClient
-      .delete(`${env.apiUrl}/api/todo/${id}`);
+      .delete(`${env.apiUrl}/api/todo/${id}`, this.getHttpOptions());
   }
 }

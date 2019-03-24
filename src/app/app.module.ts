@@ -8,13 +8,15 @@ import { TodosComponent } from './components/todos/todos.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TodoComponent } from './components/todos/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
